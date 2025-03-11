@@ -9,17 +9,39 @@
   --font-sans: 'Pretendard Variable', sans-serif;
   --font-serif: 'Noto Serif KR', serif;
   --font-suit: 'SUIT Variable', sans-serif;
-
   /* Index Layout을 위한 그리드 관련 변수 */
-  --lion: repeat(auto-fit, minimax(200px, 1fr));
+  --lion: repeat(auto-fit, minmax(200px, 1fr));
+  --animate-wobble: wobble 0.5s ease-in-out infinite;
+
+  --color-ediya-blue-200: #2c68ae;
+  --color-ediya-blue-300: #24388d;
+
+  --ediya-blue: liner-gradient(-45deg, var(--color-ediya-blue-200), var(--color-ediya-blue-300));
+
+  /* wobble 키프레임 정의 */
+  @keyframes wobble {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px) rotate(-2deg);
+    }
+    50% {
+      transform: translateX(5px) rotate(2deg);
+    }
+    75% {
+      transform: translateX(-5px) rotate(-2deg);
+    }
+  }
 }
 
 @layer components {
   .notice {
     @apply flex border border-gray-500 bg-blue-950;
+  }
 
-    > div {
-      @apply p-4 text-white w-[200px] relative;
-    }
+  .notice > div {
+    @apply p-4 text-white w-[200px] relative;
   }
 }
